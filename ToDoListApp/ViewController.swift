@@ -9,7 +9,24 @@ import UIKit
 
 
 
-class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, isComplete {
+    func toggleisComplete(for cell: UITableViewCell) {
+        
+        if let indexPath = tableView.indexPath(for: cell) {
+            
+            toggleComplete(for: indexPath.row)
+            tableView.reloadData()
+            
+            self.title = "Task"
+            
+            if !UserDefaults().bool(forKey: "Setup"){
+                UserDefaults().set(true, forKey: "Setup")
+                UserDefaults().set("o", forKey: "Setup")
+            }
+            
+        }
+    }
+    
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -23,7 +40,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "To Do List"
+        title = "Task"
         getAllItems()
         tableView.delegate = self
         tableView.dataSource = self
@@ -33,8 +50,24 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
     }
     
-    @objc private func didTapAdd() {
-        let alert = UIAlertController(title: "New Task", message: "Enter New Task", preferredStyle: .alert)
+     @IBAction func didTapAdd () {
+         
+         
+         let vc = storyboard?.instantiateViewController(withIdentifier: "Entry") as! EntryViewController
+         vc.title = "New Task"
+         vc.update = {
+             
+            
+             
+         }
+         navigationController?.pushViewController(vc , animated: true)
+         
+         
+         
+       /* let alert = UIAlertController(title: "New Task", message: "Enter New Task", preferredStyle: .alert)
+        let cancelAction = UIAlertAction(title: "Cancel", style: .default)
+        alert.addAction(cancelAction)
+        
         
         alert.addTextField(configurationHandler: nil)
         
@@ -47,7 +80,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             self?.createItem(name: text)
             
         }))
-        present(alert, animated: true)
+        present(alert, animated: true)*/
+         
+         
         
     }
     
@@ -60,21 +95,23 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         let model = models[indexPath.row]
 
        // self.models.remove(at: indexPath.row)
-       let cell  = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-       cell.textLabel?.text = model.name
+       let cell  = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? CustomTableViewCell
+        cell?.setCell(isDone: model.isComplete)
+        cell?.textLabel?.text = model.name
+        cell?.isCompleteDelegate = self
         
-        cell.accessoryType = model.isComplete ? .checkmark: .none
+        //cell.accessoryType = model.isComplete ? .checkmark: .none
         //cell.accessoryType = .checkmark
         
         
-        return cell
+        return cell!
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
-        models[indexPath.row].isComplete = !models[indexPath.row].isComplete
-        /* sheet.addAction(UIAlertAction(title: "Archive", style: .default, handler: { [weak self] _ in
+        //models[indexPath.row].isComplete = !models[indexPath.row].isComplete
+        /*sheet.addAction(UIAlertAction(title: "Archive", style: .default, handler: { [weak self] _ in
             self?.deleteItem(item: item)
             
             
@@ -94,15 +131,18 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         let item = models[indexPath.row]
         
         let editAction = UIContextualAction(style: .normal, title: "Edit") { (action, view, completion) in
-            let sheet = UIAlertController(title: "Edit", message: nil, preferredStyle: .actionSheet)
-            sheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-            sheet.addAction(UIAlertAction(title: "Edit", style: .default, handler: {_ in
+            
+           
+            
                 
                 let alert = UIAlertController(title: "Edit", message: "Edit your task", preferredStyle: .alert)
+              
                 
                 alert.addTextField(configurationHandler: nil)
                 alert.textFields?.first?.text = item.name
-                alert.addAction(UIAlertAction(title: "Save", style: .cancel, handler: { [weak self] _ in
+            let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
+            alert.addAction(cancelAction)
+            alert.addAction(UIAlertAction(title: "Save", style: .default, handler: { [weak self] _ in
                     guard let field = alert.textFields?.first, let newName = field.text, !newName.isEmpty else {
                         return
                     }
@@ -110,8 +150,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                     self?.updateItem(item: item, newName: newName)
                 }))
                 self.present(alert, animated: true)
-            }))
-            self.present(sheet, animated: true)
+            
+           
             
         }
         
@@ -201,8 +241,22 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             return 0
         }
         else{
-            return 43.3
+            return 100
         }
     }
+    
+    func toggleComplete(for index: Int) {
+        models[index].isComplete.toggle()
+        
+        do {
+            try context.save()
+        }
+        catch {
+            
+        }
+        
+    }
+    
+    
 }
 

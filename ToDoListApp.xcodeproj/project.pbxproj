@@ -16,6 +16,9 @@
 		DE3FC04328B3D9FA0046CBD7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE3FC04128B3D9FA0046CBD7 /* LaunchScreen.storyboard */; };
 		DE3FC04C28B3DBD20046CBD7 /* ToDoListItem+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE3FC04A28B3DBD20046CBD7 /* ToDoListItem+CoreDataClass.swift */; };
 		DE3FC04D28B3DBD20046CBD7 /* ToDoListItem+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE3FC04B28B3DBD20046CBD7 /* ToDoListItem+CoreDataProperties.swift */; };
+		DE8E27FA28BF5C17003B98B3 /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE8E27F928BF5C17003B98B3 /* CustomTableViewCell.swift */; };
+		DE8E27FC28C08F9C003B98B3 /* EntryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE8E27FB28C08F9C003B98B3 /* EntryViewController.swift */; };
+		DE8E27FE28C08FE7003B98B3 /* TaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE8E27FD28C08FE7003B98B3 /* TaskViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +33,9 @@
 		DE3FC04428B3D9FA0046CBD7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DE3FC04A28B3DBD20046CBD7 /* ToDoListItem+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ToDoListItem+CoreDataClass.swift"; sourceTree = "<group>"; };
 		DE3FC04B28B3DBD20046CBD7 /* ToDoListItem+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ToDoListItem+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		DE8E27F928BF5C17003B98B3 /* CustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
+		DE8E27FB28C08F9C003B98B3 /* EntryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryViewController.swift; sourceTree = "<group>"; };
+		DE8E27FD28C08FE7003B98B3 /* TaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +73,9 @@
 				DE3FC03528B3D9F90046CBD7 /* SceneDelegate.swift */,
 				DE3FC03728B3D9F90046CBD7 /* ViewController.swift */,
 				DE3FC03928B3D9F90046CBD7 /* Main.storyboard */,
+				DE8E27FB28C08F9C003B98B3 /* EntryViewController.swift */,
+				DE8E27FD28C08FE7003B98B3 /* TaskViewController.swift */,
+				DE8E27F928BF5C17003B98B3 /* CustomTableViewCell.swift */,
 				DE3FC03F28B3D9FA0046CBD7 /* Assets.xcassets */,
 				DE3FC04128B3D9FA0046CBD7 /* LaunchScreen.storyboard */,
 				DE3FC04428B3D9FA0046CBD7 /* Info.plist */,
@@ -158,9 +167,12 @@
 				DE3FC03828B3D9F90046CBD7 /* ViewController.swift in Sources */,
 				DE3FC03428B3D9F90046CBD7 /* AppDelegate.swift in Sources */,
 				DE3FC03628B3D9F90046CBD7 /* SceneDelegate.swift in Sources */,
+				DE8E27FA28BF5C17003B98B3 /* CustomTableViewCell.swift in Sources */,
 				DE3FC04C28B3DBD20046CBD7 /* ToDoListItem+CoreDataClass.swift in Sources */,
+				DE8E27FC28C08F9C003B98B3 /* EntryViewController.swift in Sources */,
 				DE3FC04D28B3DBD20046CBD7 /* ToDoListItem+CoreDataProperties.swift in Sources */,
 				DE3FC03E28B3D9F90046CBD7 /* ToDoListApp.xcdatamodeld in Sources */,
+				DE8E27FE28C08FE7003B98B3 /* TaskViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
