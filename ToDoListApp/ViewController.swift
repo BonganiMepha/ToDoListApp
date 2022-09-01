@@ -10,7 +10,12 @@ import UIKit
 
 
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, isComplete {
+    var editIndexPath: Int?
+    
     func toggleisComplete(for cell: UITableViewCell) {
+        
+        
+        
         
         if let indexPath = tableView.indexPath(for: cell) {
             
@@ -36,7 +41,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
  
     
-     private var models = [ToDoListItem]()
+      private var models = [ToDoListItem]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,6 +53,10 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(didTapAdd))
         
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        tableView.reloadData()
+        getAllItems()
     }
     
      @IBAction func didTapAdd () {
@@ -130,30 +139,39 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let item = models[indexPath.row]
         
+        
         let editAction = UIContextualAction(style: .normal, title: "Edit") { (action, view, completion) in
+            self.editIndexPath = indexPath.row
+            self.performSegue(withIdentifier: "Edit", sender: self)
+            
+            
+            
+            
             
            
             
                 
-                let alert = UIAlertController(title: "Edit", message: "Edit your task", preferredStyle: .alert)
-              
-                
-                alert.addTextField(configurationHandler: nil)
-                alert.textFields?.first?.text = item.name
-            let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
-            alert.addAction(cancelAction)
-            alert.addAction(UIAlertAction(title: "Save", style: .default, handler: { [weak self] _ in
-                    guard let field = alert.textFields?.first, let newName = field.text, !newName.isEmpty else {
-                        return
-                    }
-                    
-                    self?.updateItem(item: item, newName: newName)
-                }))
-                self.present(alert, animated: true)
-            
+//                let alert = UIAlertController(title: "Edit", message: "Edit your task", preferredStyle: .alert)
+//
+//
+//                alert.addTextField(configurationHandler: nil)
+//                alert.textFields?.first?.text = item.name
+//            let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
+//            alert.addAction(cancelAction)
+//            alert.addAction(UIAlertAction(title: "Save", style: .default, handler: { [weak self] _ in
+//                    guard let field = alert.textFields?.first, let newName = field.text, !newName.isEmpty else {
+//                        return
+//                    }
+//
+//                    self?.updateItem(item: item, newName: newName)
+//                }))
+//                self.present(alert, animated: true)
+//
            
             
         }
+        
+        
         
         let archiveAction = UIContextualAction(style: .normal, title: "Archive"){(action, view, completion) in
             let item = self.models[indexPath.row]
@@ -173,6 +191,11 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?){
+        if let destination = segue.destination as? EditViewController{
+            destination.indexPath = editIndexPath
+        }
+    }
 
     // Core Data
     
@@ -233,17 +256,10 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         }
     }
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
-        let item = models[indexPath.row]
+ //       let item = models[indexPath.row]
         
-        if item.isArchived {
-            return 0
-        }
-        else{
-            return 100
-        }
-    }
     
     func toggleComplete(for index: Int) {
         models[index].isComplete.toggle()

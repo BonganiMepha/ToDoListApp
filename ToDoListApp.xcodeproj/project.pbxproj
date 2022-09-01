@@ -19,6 +19,7 @@
 		DE8E27FA28BF5C17003B98B3 /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE8E27F928BF5C17003B98B3 /* CustomTableViewCell.swift */; };
 		DE8E27FC28C08F9C003B98B3 /* EntryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE8E27FB28C08F9C003B98B3 /* EntryViewController.swift */; };
 		DE8E27FE28C08FE7003B98B3 /* TaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE8E27FD28C08FE7003B98B3 /* TaskViewController.swift */; };
+		DE8E280028C0DFAD003B98B3 /* EditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE8E27FF28C0DFAD003B98B3 /* EditViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		DE8E27F928BF5C17003B98B3 /* CustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
 		DE8E27FB28C08F9C003B98B3 /* EntryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryViewController.swift; sourceTree = "<group>"; };
 		DE8E27FD28C08FE7003B98B3 /* TaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskViewController.swift; sourceTree = "<group>"; };
+		DE8E27FF28C0DFAD003B98B3 /* EditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +74,7 @@
 				DE3FC03328B3D9F90046CBD7 /* AppDelegate.swift */,
 				DE3FC03528B3D9F90046CBD7 /* SceneDelegate.swift */,
 				DE3FC03728B3D9F90046CBD7 /* ViewController.swift */,
+				DE8E27FF28C0DFAD003B98B3 /* EditViewController.swift */,
 				DE3FC03928B3D9F90046CBD7 /* Main.storyboard */,
 				DE8E27FB28C08F9C003B98B3 /* EntryViewController.swift */,
 				DE8E27FD28C08FE7003B98B3 /* TaskViewController.swift */,
@@ -164,6 +167,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DE8E280028C0DFAD003B98B3 /* EditViewController.swift in Sources */,
 				DE3FC03828B3D9F90046CBD7 /* ViewController.swift in Sources */,
 				DE3FC03428B3D9F90046CBD7 /* AppDelegate.swift in Sources */,
 				DE3FC03628B3D9F90046CBD7 /* SceneDelegate.swift in Sources */,

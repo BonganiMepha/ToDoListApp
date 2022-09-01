@@ -8,6 +8,34 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Edit View Controller-->
+        <scene sceneID="3pa-8w-ffy">
+            <objects>
+                <viewController id="FQf-mf-68H" customClass="EditViewController" customModule="ToDoListApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Tj5-L7-Rjl">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="Ae8-9h-KKl"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="ZEs-eW-fr2">
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="fpG-Js-1t1">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="RvW-1h-x1l">
+                                <rect key="frame" x="302" y="5" width="92" height="34.5"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Save"/>
+                            </button>
+                            <connections>
+                                <action selector="saveEditedButton:" destination="FQf-mf-68H" id="11J-PA-RrE"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="QQb-Fx-BwE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1094" y="-622"/>
+        </scene>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
@@ -68,6 +96,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="z4e-1X-vU7" id="4lp-KC-jHV"/>
+                        <segue destination="FQf-mf-68H" kind="show" identifier="Edit" id="4gp-dW-One"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -83,20 +112,31 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vTB-M0-K1D">
-                                <rect key="frame" x="20" y="64" width="374" height="52"/>
+                                <rect key="frame" x="20" y="94" width="374" height="40"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="52" id="VpN-OA-Big"/>
+                                    <constraint firstAttribute="height" constant="40" id="Btg-vh-dS4"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0iT-af-MtS">
+                                <rect key="frame" x="100" y="234" width="214" height="31"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Save"/>
+                                <connections>
+                                    <action selector="saveTapped:" destination="s7U-pG-EYj" eventType="touchUpInside" id="w1e-Fo-IYi"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="voq-bO-gkE"/>
                         <color key="backgroundColor" systemColor="systemPurpleColor"/>
                         <constraints>
-                            <constraint firstItem="vTB-M0-K1D" firstAttribute="top" secondItem="voq-bO-gkE" secondAttribute="top" constant="20" id="GDB-0Y-tgM"/>
-                            <constraint firstItem="voq-bO-gkE" firstAttribute="trailing" secondItem="vTB-M0-K1D" secondAttribute="trailing" constant="20" id="JTi-3R-9FX"/>
-                            <constraint firstItem="vTB-M0-K1D" firstAttribute="leading" secondItem="voq-bO-gkE" secondAttribute="leading" constant="20" id="lV7-3U-9fm"/>
+                            <constraint firstItem="voq-bO-gkE" firstAttribute="trailing" secondItem="vTB-M0-K1D" secondAttribute="trailing" constant="20" id="GYq-eh-Kpk"/>
+                            <constraint firstItem="voq-bO-gkE" firstAttribute="trailing" secondItem="0iT-af-MtS" secondAttribute="trailing" constant="100" id="MWU-XT-gAp"/>
+                            <constraint firstItem="vTB-M0-K1D" firstAttribute="leading" secondItem="voq-bO-gkE" secondAttribute="leading" constant="20" id="Qs7-fP-n9y"/>
+                            <constraint firstItem="vTB-M0-K1D" firstAttribute="top" secondItem="voq-bO-gkE" secondAttribute="top" constant="50" id="Xey-xg-e3M"/>
+                            <constraint firstItem="0iT-af-MtS" firstAttribute="leading" secondItem="voq-bO-gkE" secondAttribute="leading" constant="100" id="dch-kH-h5o"/>
+                            <constraint firstItem="0iT-af-MtS" firstAttribute="top" secondItem="vTB-M0-K1D" secondAttribute="bottom" constant="100" id="wxL-ku-rJG"/>
                         </constraints>
                     </view>
                     <connections>
