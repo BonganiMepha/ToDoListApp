@@ -15,8 +15,34 @@
                     <view key="view" contentMode="scaleToFill" id="Tj5-L7-Rjl">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Name" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ydm-VJ-G4H">
+                                <rect key="frame" x="24" y="130" width="366" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zcv-Ol-NKN">
+                                <rect key="frame" x="125" y="294" width="117" height="31"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="31" id="G7p-oI-PMv"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="SAVE"/>
+                                <connections>
+                                    <action selector="saveTest:" destination="FQf-mf-68H" eventType="touchUpInside" id="NUo-Sf-4ff"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="Ae8-9h-KKl"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Ydm-VJ-G4H" firstAttribute="top" secondItem="Ae8-9h-KKl" secondAttribute="top" constant="42" id="Hq1-y3-9vi"/>
+                            <constraint firstItem="Zcv-Ol-NKN" firstAttribute="leading" secondItem="Ae8-9h-KKl" secondAttribute="leading" constant="125" id="MKv-QR-Fud"/>
+                            <constraint firstItem="Ae8-9h-KKl" firstAttribute="bottom" secondItem="Zcv-Ol-NKN" secondAttribute="bottom" constant="537" id="ZHG-5E-8Ej"/>
+                            <constraint firstItem="Ydm-VJ-G4H" firstAttribute="centerX" secondItem="Tj5-L7-Rjl" secondAttribute="centerX" id="hou-LT-1NH"/>
+                            <constraint firstItem="Zcv-Ol-NKN" firstAttribute="centerX" secondItem="Ydm-VJ-G4H" secondAttribute="centerX" constant="-23.5" id="k4D-Gi-DVA"/>
+                            <constraint firstItem="Ydm-VJ-G4H" firstAttribute="leading" secondItem="Ae8-9h-KKl" secondAttribute="leading" constant="24" id="s1C-m7-fCA"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="ZEs-eW-fr2">
                         <barButtonItem key="rightBarButtonItem" style="plain" id="fpG-Js-1t1">
@@ -27,14 +53,17 @@
                                 <buttonConfiguration key="configuration" style="plain" title="Save"/>
                             </button>
                             <connections>
-                                <action selector="saveEditedButton:" destination="FQf-mf-68H" id="11J-PA-RrE"/>
+                                <action selector="saveButton:" destination="FQf-mf-68H" id="9PW-Qx-JqJ"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="editTextField" destination="Ydm-VJ-G4H" id="hfX-2M-HkD"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QQb-Fx-BwE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1094" y="-622"/>
+            <point key="canvasLocation" x="1750.7246376811595" y="-598.66071428571422"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -56,9 +85,9 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m4N-TO-hbH">
-                                                    <rect key="frame" x="340" y="10" width="54" height="32"/>
+                                                    <rect key="frame" x="332" y="5" width="62" height="42"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="54" id="kY0-xN-CHV"/>
+                                                        <constraint firstAttribute="width" constant="62" id="kY0-xN-CHV"/>
                                                     </constraints>
                                                     <state key="normal" title="Button"/>
                                                     <buttonConfiguration key="configuration" style="gray" image="checkmark" catalog="system"/>
@@ -68,9 +97,9 @@
                                                 </button>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="bottomMargin" secondItem="m4N-TO-hbH" secondAttribute="bottom" constant="-1" id="Xsq-85-BN3"/>
-                                                <constraint firstItem="m4N-TO-hbH" firstAttribute="leading" secondItem="ymy-Fv-Nb6" secondAttribute="leadingMargin" constant="320" id="btf-IF-S6m"/>
-                                                <constraint firstItem="m4N-TO-hbH" firstAttribute="top" secondItem="ymy-Fv-Nb6" secondAttribute="topMargin" constant="-1" id="lqh-NG-c7M"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="m4N-TO-hbH" secondAttribute="bottom" constant="-6" id="Xsq-85-BN3"/>
+                                                <constraint firstItem="m4N-TO-hbH" firstAttribute="leading" secondItem="ymy-Fv-Nb6" secondAttribute="leadingMargin" constant="312" id="btf-IF-S6m"/>
+                                                <constraint firstItem="m4N-TO-hbH" firstAttribute="top" secondItem="ymy-Fv-Nb6" secondAttribute="topMargin" constant="-6" id="lqh-NG-c7M"/>
                                                 <constraint firstItem="m4N-TO-hbH" firstAttribute="trailing" secondItem="ymy-Fv-Nb6" secondAttribute="trailingMargin" id="skK-LH-bi5"/>
                                             </constraints>
                                         </tableViewCellContentView>
@@ -104,7 +133,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1023.1884057971015" y="40.848214285714285"/>
+            <point key="canvasLocation" x="942" y="41"/>
         </scene>
         <!--Entry View Controller-->
         <scene sceneID="Rgd-v5-mln">

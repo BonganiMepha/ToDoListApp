@@ -76,6 +76,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
     }
+    
+    func updateItem(item: ToDoListItem, newName: String) {
+        item.name = newName
+        saveContext()
+    }
 
 }
 
