@@ -20,7 +20,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="ZEs-eW-fr2">
                         <barButtonItem key="rightBarButtonItem" style="plain" id="fpG-Js-1t1">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="RvW-1h-x1l">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="RvW-1h-x1l">
                                 <rect key="frame" x="302" y="5" width="92" height="34.5"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
@@ -44,19 +44,22 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="100" estimatedRowHeight="100" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="z4e-1X-vU7">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="52" estimatedRowHeight="100" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="z4e-1X-vU7">
                                 <rect key="frame" x="0.0" y="88" width="414" height="774"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" rowHeight="100" id="Vo2-Cd-OzA" customClass="CustomTableViewCell" customModule="ToDoListApp" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="44.5" width="414" height="100"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" rowHeight="52" id="Vo2-Cd-OzA" customClass="CustomTableViewCell" customModule="ToDoListApp" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="44.5" width="414" height="52"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Vo2-Cd-OzA" id="ymy-Fv-Nb6">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="100"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="52"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m4N-TO-hbH">
-                                                    <rect key="frame" x="327" y="34" width="67" height="31"/>
+                                                    <rect key="frame" x="340" y="10" width="54" height="32"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="54" id="kY0-xN-CHV"/>
+                                                    </constraints>
                                                     <state key="normal" title="Button"/>
                                                     <buttonConfiguration key="configuration" style="gray" image="checkmark" catalog="system"/>
                                                     <connections>
@@ -65,9 +68,9 @@
                                                 </button>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="bottomMargin" secondItem="m4N-TO-hbH" secondAttribute="bottom" constant="24" id="Xsq-85-BN3"/>
-                                                <constraint firstItem="m4N-TO-hbH" firstAttribute="leading" secondItem="ymy-Fv-Nb6" secondAttribute="leadingMargin" constant="307" id="btf-IF-S6m"/>
-                                                <constraint firstItem="m4N-TO-hbH" firstAttribute="top" secondItem="ymy-Fv-Nb6" secondAttribute="topMargin" constant="23" id="lqh-NG-c7M"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="m4N-TO-hbH" secondAttribute="bottom" constant="-1" id="Xsq-85-BN3"/>
+                                                <constraint firstItem="m4N-TO-hbH" firstAttribute="leading" secondItem="ymy-Fv-Nb6" secondAttribute="leadingMargin" constant="320" id="btf-IF-S6m"/>
+                                                <constraint firstItem="m4N-TO-hbH" firstAttribute="top" secondItem="ymy-Fv-Nb6" secondAttribute="topMargin" constant="-1" id="lqh-NG-c7M"/>
                                                 <constraint firstItem="m4N-TO-hbH" firstAttribute="trailing" secondItem="ymy-Fv-Nb6" secondAttribute="trailingMargin" id="skK-LH-bi5"/>
                                             </constraints>
                                         </tableViewCellContentView>

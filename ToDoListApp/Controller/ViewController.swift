@@ -14,9 +14,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     func toggleisComplete(for cell: UITableViewCell) {
         
-        
-        
-        
         if let indexPath = tableView.indexPath(for: cell) {
             
             toggleComplete(for: indexPath.row)
@@ -103,15 +100,10 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let model = models[indexPath.row]
 
-       // self.models.remove(at: indexPath.row)
        let cell  = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? CustomTableViewCell
         cell?.setCell(isDone: model.isComplete)
         cell?.textLabel?.text = model.name
         cell?.isCompleteDelegate = self
-        
-        //cell.accessoryType = model.isComplete ? .checkmark: .none
-        //cell.accessoryType = .checkmark
-        
         
         return cell!
     }
