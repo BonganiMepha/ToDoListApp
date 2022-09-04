@@ -8,54 +8,38 @@
 import UIKit
 
 class EditViewController: UIViewController {
-    
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-   
-    private var models = [ToDoListItem]()
-    var indexPath: Int?
-    let vc = ViewController()
-    
-    
-    func getAllItems() {
-        do {
-            models = try context.fetch(ToDoListItem.fetchRequest())
-           
-            DispatchQueue.main.async {
-                self.vc.tableView?.reloadData()
-            }
-        }
-        catch {
-            //error
-        }
-    
-    }
+    var taskName: ToDoListItem?
+    @IBOutlet weak var editTextField: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
-        getAllItems()
-       
-        
-        
-        
-       
-        
-        
-        // Do any additional setup after loading the view.
+        AssignFields(title: taskName!)
+        editTextField.text = taskName?.name ?? ""
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    
+    @IBAction func saveButton(_ sender: Any) {
+        updateItem(item: taskName!, newName: editTextField.text ?? "")
+        _ = navigationController?.popToRootViewController(animated: true)
+        print("save button Pressed")
     }
-    */
-
-    @IBAction func saveEditedButton(_ sender: Any) {
-        let item = models[indexPath!]
-        print(item)
-        
+    
+    @IBAction func saveTest(_ sender: UIButton) {
+        updateItem(item: taskName!, newName: editTextField.text ?? "")
+        _ = navigationController?.popToRootViewController(animated: true)
+        print("save button Pressed")
+    }
+    func AssignFields(title taskTitle: ToDoListItem ){
+        taskName = taskTitle
+    }
+    
+    func updateItem(item: ToDoListItem, newName: String) {
+        item.name = newName
+        do {
+            try context.save()
+        }
+        catch {
+            print(error.localizedDescription)
+        }
     }
 }
