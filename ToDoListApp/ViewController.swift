@@ -17,17 +17,17 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         
         
-        if let indexPath = tableView.indexPath(for: cell) {
+          if let indexPath = tableView.indexPath(for: cell) {
             
             toggleComplete(for: indexPath.row)
             tableView.reloadData()
             
             self.title = "Task"
             
-            if !UserDefaults().bool(forKey: "Setup"){
+        /*if !UserDefaults().bool(forKey: "Setup"){
                 UserDefaults().set(true, forKey: "Setup")
                 UserDefaults().set("o", forKey: "Setup")
-            }
+            }*/
             
         }
     }
@@ -103,7 +103,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let model = models[indexPath.row]
 
-       // self.models.remove(at: indexPath.row)
+       //self.models.remove(at: indexPath.row)
        let cell  = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? CustomTableViewCell
         cell?.setCell(isDone: model.isComplete)
         cell?.textLabel?.text = model.name
@@ -186,8 +186,45 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             }
                 
             }
-            archiveAction.backgroundColor = .purple
-        return UISwipeActionsConfiguration(actions: [editAction, archiveAction])
+        let deleteAction = UIContextualAction(style: .normal, title: "Delete"){(action, view, completion) in
+           // self.models.remove(at: indexPath.row)
+            
+            
+            let alert = UIAlertController(title: "Delete", message: "Are you sure", preferredStyle: .alert)
+          
+          
+                          alert.addTextField(configurationHandler: nil)
+                          alert.textFields?.first?.text = item.name
+                      let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
+                      alert.addAction(cancelAction)
+                      alert.addAction(UIAlertAction(title: "Delete", style: .default, handler: { [weak self] _ in
+                              guard let field = alert.textFields?.first, let newName = field.text, !newName.isEmpty else {
+                                  return
+                              }
+          
+                              self?.getAllItems()
+                          }))
+                        self.present(alert, animated: true)
+            
+            
+            let item = self.models[indexPath.row]
+           // tableView.reloadData()
+            
+            do{
+               try self.context.save()
+                try self.deleteItem(item: item)
+            }
+            catch{
+                
+            }
+            
+            
+            }
+            
+        editAction.backgroundColor = .green
+            archiveAction.backgroundColor = .systemBlue
+        deleteAction.backgroundColor = .systemRed
+        return UISwipeActionsConfiguration(actions: [editAction, archiveAction, deleteAction])
         
     }
     

@@ -20,7 +20,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="ZEs-eW-fr2">
                         <barButtonItem key="rightBarButtonItem" style="plain" id="fpG-Js-1t1">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="RvW-1h-x1l">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="RvW-1h-x1l">
                                 <rect key="frame" x="302" y="5" width="92" height="34.5"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
@@ -120,9 +120,12 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0iT-af-MtS">
-                                <rect key="frame" x="100" y="234" width="214" height="31"/>
+                                <rect key="frame" x="100" y="815" width="214" height="58.5"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Save"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Save">
+                                    <fontDescription key="titleFontDescription" type="system" weight="semibold" pointSize="41"/>
+                                    <color key="baseForegroundColor" red="0.093895245870000005" green="0.17467015850000001" blue="0.96611279250000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                </buttonConfiguration>
                                 <connections>
                                     <action selector="saveTapped:" destination="s7U-pG-EYj" eventType="touchUpInside" id="w1e-Fo-IYi"/>
                                 </connections>
@@ -131,12 +134,17 @@
                         <viewLayoutGuide key="safeArea" id="voq-bO-gkE"/>
                         <color key="backgroundColor" systemColor="systemPurpleColor"/>
                         <constraints>
+                            <constraint firstItem="0iT-af-MtS" firstAttribute="top" secondItem="vTB-M0-K1D" secondAttribute="bottom" constant="681" id="4iF-OY-TPY"/>
+                            <constraint firstItem="0iT-af-MtS" firstAttribute="leading" secondItem="voq-bO-gkE" secondAttribute="leading" constant="100" id="E6Z-s0-v6o"/>
+                            <constraint firstItem="0iT-af-MtS" firstAttribute="leading" secondItem="voq-bO-gkE" secondAttribute="leading" constant="100" id="F37-NI-VSe"/>
                             <constraint firstItem="voq-bO-gkE" firstAttribute="trailing" secondItem="vTB-M0-K1D" secondAttribute="trailing" constant="20" id="GYq-eh-Kpk"/>
                             <constraint firstItem="voq-bO-gkE" firstAttribute="trailing" secondItem="0iT-af-MtS" secondAttribute="trailing" constant="100" id="MWU-XT-gAp"/>
+                            <constraint firstItem="voq-bO-gkE" firstAttribute="trailing" secondItem="0iT-af-MtS" secondAttribute="trailing" constant="100" id="N4g-8h-5oU"/>
                             <constraint firstItem="vTB-M0-K1D" firstAttribute="leading" secondItem="voq-bO-gkE" secondAttribute="leading" constant="20" id="Qs7-fP-n9y"/>
                             <constraint firstItem="vTB-M0-K1D" firstAttribute="top" secondItem="voq-bO-gkE" secondAttribute="top" constant="50" id="Xey-xg-e3M"/>
                             <constraint firstItem="0iT-af-MtS" firstAttribute="leading" secondItem="voq-bO-gkE" secondAttribute="leading" constant="100" id="dch-kH-h5o"/>
-                            <constraint firstItem="0iT-af-MtS" firstAttribute="top" secondItem="vTB-M0-K1D" secondAttribute="bottom" constant="100" id="wxL-ku-rJG"/>
+                            <constraint firstAttribute="bottom" secondItem="0iT-af-MtS" secondAttribute="bottom" constant="22.5" id="nG8-aI-zNy"/>
+                            <constraint firstItem="voq-bO-gkE" firstAttribute="trailing" secondItem="0iT-af-MtS" secondAttribute="trailing" constant="100" id="xRZ-BW-xWM"/>
                         </constraints>
                     </view>
                     <connections>
