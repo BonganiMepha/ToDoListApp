@@ -10,7 +10,12 @@ import UIKit
 
 
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, isComplete {
+  
     var editIndexPath: Int?
+    
+    private var models = [ToDoListItem]()
+   
+     private var unarchived = [ToDoListItem]()
     
     func toggleisComplete(for cell: UITableViewCell) {
         
@@ -24,10 +29,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             
             self.title = "Task"
             
-        /*if !UserDefaults().bool(forKey: "Setup"){
-                UserDefaults().set(true, forKey: "Setup")
-                UserDefaults().set("o", forKey: "Setup")
-            }*/
+       
             
         }
     }
@@ -41,7 +43,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
  
     
-      private var models = [ToDoListItem]()
+      
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,7 +53,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         tableView.dataSource = self
         
         
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(didTapAdd))
+       // navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(didTapAdd))
+        
         
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -64,6 +67,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
          
          let vc = storyboard?.instantiateViewController(withIdentifier: "Entry") as! EntryViewController
          vc.title = "New Task"
+         
          vc.update = {
              
             
@@ -96,12 +100,12 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return models.count
+        return unarchived.count
         
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let model = models[indexPath.row]
+        let model = unarchived[indexPath.row]
 
        //self.models.remove(at: indexPath.row)
        let cell  = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? CustomTableViewCell
@@ -137,7 +141,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        let item = models[indexPath.row]
+        let item = unarchived[indexPath.row]
+        
         
         
         let editAction = UIContextualAction(style: .normal, title: "Edit") { (action, view, completion) in
@@ -174,10 +179,21 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         
         let archiveAction = UIContextualAction(style: .normal, title: "Archive"){(action, view, completion) in
-            let item = self.models[indexPath.row]
-            item.isArchived.toggle()
+            let item = self.unarchived[indexPath.row]
+            //let filtered = item.filter(archived)
+            
+           // self.models.remove(at: indexPath.row)
+            
+            
+            item.isArchived = true
+            self.getAllItems()
+            
             tableView.reloadData()
+            
             print(item.isArchived)
+            
+            
+            
             do{
                 try self.context.save()
             }
@@ -186,6 +202,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             }
                 
             }
+        
+        
         let deleteAction = UIContextualAction(style: .normal, title: "Delete"){(action, view, completion) in
            // self.models.remove(at: indexPath.row)
             
@@ -207,12 +225,12 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                         self.present(alert, animated: true)
             
             
-            let item = self.models[indexPath.row]
+            let item = self.unarchived[indexPath.row]
            // tableView.reloadData()
             
             do{
                try self.context.save()
-                try self.deleteItem(item: item)
+            
             }
             catch{
                 
@@ -239,13 +257,19 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     func getAllItems() {
         do {
             models = try context.fetch(ToDoListItem.fetchRequest())
-           
+            unarchived = models.filter({ items in
+                items.isArchived == false
+            })
+            
+
+            
+                                            
             DispatchQueue.main.async {
                 self.tableView.reloadData()
             }
         }
         catch {
-            //error
+            
         }
         
     
@@ -255,7 +279,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         let newItem = ToDoListItem(context: context)
         newItem.name = name
-        newItem.createdAt = Date()
+        newItem.date = Date()
         
         do {
             try context.save()
@@ -293,13 +317,16 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         }
     }
     
+    
+    
+    
 //    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
  //       let item = models[indexPath.row]
         
     
     func toggleComplete(for index: Int) {
-        models[index].isComplete.toggle()
+        unarchived[index].isComplete.toggle()
         
         do {
             try context.save()

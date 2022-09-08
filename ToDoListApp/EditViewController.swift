@@ -22,6 +22,8 @@ class EditViewController: UIViewController {
            
             DispatchQueue.main.async {
                 self.vc.tableView?.reloadData()
+            
+
             }
         }
         catch {
