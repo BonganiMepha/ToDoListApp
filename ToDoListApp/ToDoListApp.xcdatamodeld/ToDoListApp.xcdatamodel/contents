@@ -1,13 +1,25 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="20086" systemVersion="21G83" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Category" representedClassName="Category" syncable="YES">
+        <attribute name="catDescription" optional="YES" attributeType="String"/>
+        <attribute name="catName" optional="YES" attributeType="String"/>
+        <relationship name="todoListItem" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ToDoListItem" inverseName="origin" inverseEntity="ToDoListItem"/>
+        <uniquenessConstraints>
+            <uniquenessConstraint>
+                <constraint value="catName"/>
+            </uniquenessConstraint>
+        </uniquenessConstraints>
+    </entity>
     <entity name="ToDoListItem" representedClassName="ToDoListItem" syncable="YES">
         <attribute name="createdAt" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="isArchived" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="isComplete" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="name" optional="YES" attributeType="String"/>
         <attribute name="taskDescription" optional="YES" attributeType="String"/>
+        <relationship name="origin" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Category" inverseName="todoListItem" inverseEntity="Category"/>
     </entity>
     <elements>
-        <element name="ToDoListItem" positionX="-63" positionY="-18" width="128" height="104"/>
+        <element name="Category" positionX="240.4534912109375" positionY="-76.93679809570312" width="128" height="74"/>
+        <element name="ToDoListItem" positionX="210.0975341796875" positionY="211.1419677734375" width="128" height="119"/>
     </elements>
 </model>

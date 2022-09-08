@@ -14,6 +14,8 @@
 		434F671C28C9C7D400013427 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 434F671B28C9C7D400013427 /* Event.swift */; };
 		434F671E28C9C7D900013427 /* EventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 434F671D28C9C7D900013427 /* EventCell.swift */; };
 		43C6FF1728CA662A006C7AD1 /* EditTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43C6FF1628CA662A006C7AD1 /* EditTableViewController.swift */; };
+		43C6FF1F28CA7541006C7AD1 /* Category+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43C6FF1D28CA7541006C7AD1 /* Category+CoreDataClass.swift */; };
+		43C6FF2028CA7541006C7AD1 /* Category+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43C6FF1E28CA7541006C7AD1 /* Category+CoreDataProperties.swift */; };
 		43CBEF8D28C3B07B0017A197 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43CBEF8C28C3B07B0017A197 /* Extensions.swift */; };
 		43CBEF8F28C3B0BD0017A197 /* SwiftGif.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43CBEF8E28C3B0BD0017A197 /* SwiftGif.swift */; };
 		DE3FC03428B3D9F90046CBD7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE3FC03328B3D9F90046CBD7 /* AppDelegate.swift */; };
@@ -38,6 +40,8 @@
 		434F671B28C9C7D400013427 /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		434F671D28C9C7D900013427 /* EventCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventCell.swift; sourceTree = "<group>"; };
 		43C6FF1628CA662A006C7AD1 /* EditTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTableViewController.swift; sourceTree = "<group>"; };
+		43C6FF1D28CA7541006C7AD1 /* Category+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Category+CoreDataClass.swift"; sourceTree = "<group>"; };
+		43C6FF1E28CA7541006C7AD1 /* Category+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Category+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		43CBEF8C28C3B07B0017A197 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		43CBEF8E28C3B0BD0017A197 /* SwiftGif.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftGif.swift; sourceTree = "<group>"; };
 		DE3FC03028B3D9F90046CBD7 /* ToDoListApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ToDoListApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -67,6 +71,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		43C6FF1C28CA72EE006C7AD1 /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				43C6FF1D28CA7541006C7AD1 /* Category+CoreDataClass.swift */,
+				43C6FF1E28CA7541006C7AD1 /* Category+CoreDataProperties.swift */,
+			);
+			path = Category;
+			sourceTree = "<group>";
+		};
+		43C6FF2128CA75FC006C7AD1 /* Swiftui */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Swiftui;
+			sourceTree = "<group>";
+		};
 		43CBEF8B28C3B0600017A197 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
@@ -79,6 +99,7 @@
 		43CBEF9128C3B2060017A197 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				43C6FF1C28CA72EE006C7AD1 /* Category */,
 				DE3FC04E28B3DC810046CBD7 /* ToDoListItem */,
 			);
 			path = Model;
@@ -125,6 +146,7 @@
 		DE3FC03228B3D9F90046CBD7 /* ToDoListApp */ = {
 			isa = PBXGroup;
 			children = (
+				43C6FF2128CA75FC006C7AD1 /* Swiftui */,
 				434F671928C9C7B400013427 /* CalendarCell.swift */,
 				434F671728C9C79F00013427 /* CalendarHelper.swift */,
 				DE3FC03328B3D9F90046CBD7 /* AppDelegate.swift */,
@@ -228,7 +250,9 @@
 				DE8E280028C0DFAD003B98B3 /* EditViewController.swift in Sources */,
 				DE3FC03828B3D9F90046CBD7 /* ViewController.swift in Sources */,
 				DE3FC03428B3D9F90046CBD7 /* AppDelegate.swift in Sources */,
+				43C6FF1F28CA7541006C7AD1 /* Category+CoreDataClass.swift in Sources */,
 				DE3FC03628B3D9F90046CBD7 /* SceneDelegate.swift in Sources */,
+				43C6FF2028CA7541006C7AD1 /* Category+CoreDataProperties.swift in Sources */,
 				DE8E27FA28BF5C17003B98B3 /* CustomTableViewCell.swift in Sources */,
 				DE3FC04C28B3DBD20046CBD7 /* ToDoListItem+CoreDataClass.swift in Sources */,
 				434F671A28C9C7B400013427 /* CalendarCell.swift in Sources */,
