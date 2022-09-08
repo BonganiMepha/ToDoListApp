@@ -5,14 +5,14 @@ var selectedDate = Date()
 class WeeklyViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource,
 							UITableViewDelegate, UITableViewDataSource
 {
-	
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
 	@IBOutlet weak var monthLabel: UILabel!
 	@IBOutlet weak var tableView: UITableView!
 	@IBOutlet weak var collectionView: UICollectionView!
 	
 
 	var totalSquares = [Date]()
-	
+    private var weeklyTasks = [ToDoListItem]()
 	
 	override func viewDidLoad()
 	{
@@ -84,12 +84,14 @@ class WeeklyViewController: UIViewController, UICollectionViewDelegate, UICollec
 	
 	@IBAction func previousWeek(_ sender: Any)
 	{
+        //minus 7 days
 		selectedDate = CalendarHelper().addDays(date: selectedDate, days: -7)
 		setWeekView()
 	}
 	
 	@IBAction func nextWeek(_ sender: Any)
 	{
+        //add 7 days
 		selectedDate = CalendarHelper().addDays(date: selectedDate, days: 7)
 		setWeekView()
 	}
@@ -103,14 +105,16 @@ class WeeklyViewController: UIViewController, UICollectionViewDelegate, UICollec
 	
 	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
 	{
-		return Event().eventsForDate(date: selectedDate).count
+    
+        return eventsForDate(date: selectedDate).count
+        
 	}
 	
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
 	{
 		let cell = tableView.dequeueReusableCell(withIdentifier: "cellID") as! EventCell
-		let event = Event().eventsForDate(date: selectedDate)[indexPath.row]
-		cell.eventLabel.text = event.name + " " + CalendarHelper().timeString(date: event.date)
+		let event = eventsForDate(date: selectedDate)[indexPath.row]
+        cell.eventLabel.text = event.name ?? "" + " " + CalendarHelper().timeString(date: event.createdAt ?? Date())
 		return cell
 	}
 	
@@ -118,6 +122,33 @@ class WeeklyViewController: UIViewController, UICollectionViewDelegate, UICollec
 	{
 		super.viewDidAppear(animated)
 		tableView.reloadData()
+        getAllItems()
 	}
+    
+    func getAllItems() {
+        do {
+            weeklyTasks  = try context.fetch(ToDoListItem.fetchRequest())
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+        }
+        catch {
+            //error
+            print(error.localizedDescription)
+        }
+    }
+    
+    func eventsForDate(date: Date) -> [ToDoListItem]
+    {
+        var daysEvents = [ToDoListItem]()
+        for event in weeklyTasks
+        {
+            if(Calendar.current.isDate(event.createdAt ?? Date(), inSameDayAs:date))
+            {
+                daysEvents.append(event)
+            }
+        }
+        return daysEvents
+    }
 }
 

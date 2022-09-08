@@ -13,6 +13,7 @@
 		434F671A28C9C7B400013427 /* CalendarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 434F671928C9C7B400013427 /* CalendarCell.swift */; };
 		434F671C28C9C7D400013427 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 434F671B28C9C7D400013427 /* Event.swift */; };
 		434F671E28C9C7D900013427 /* EventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 434F671D28C9C7D900013427 /* EventCell.swift */; };
+		43C6FF1728CA662A006C7AD1 /* EditTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43C6FF1628CA662A006C7AD1 /* EditTableViewController.swift */; };
 		43CBEF8D28C3B07B0017A197 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43CBEF8C28C3B07B0017A197 /* Extensions.swift */; };
 		43CBEF8F28C3B0BD0017A197 /* SwiftGif.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43CBEF8E28C3B0BD0017A197 /* SwiftGif.swift */; };
 		DE3FC03428B3D9F90046CBD7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE3FC03328B3D9F90046CBD7 /* AppDelegate.swift */; };
@@ -26,7 +27,6 @@
 		DE3FC04D28B3DBD20046CBD7 /* ToDoListItem+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE3FC04B28B3DBD20046CBD7 /* ToDoListItem+CoreDataProperties.swift */; };
 		DE8E27FA28BF5C17003B98B3 /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE8E27F928BF5C17003B98B3 /* CustomTableViewCell.swift */; };
 		DE8E27FC28C08F9C003B98B3 /* EntryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE8E27FB28C08F9C003B98B3 /* EntryViewController.swift */; };
-		DE8E27FE28C08FE7003B98B3 /* TaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE8E27FD28C08FE7003B98B3 /* TaskViewController.swift */; };
 		DE8E280028C0DFAD003B98B3 /* EditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE8E27FF28C0DFAD003B98B3 /* EditViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -37,6 +37,7 @@
 		434F671928C9C7B400013427 /* CalendarCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarCell.swift; sourceTree = "<group>"; };
 		434F671B28C9C7D400013427 /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		434F671D28C9C7D900013427 /* EventCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventCell.swift; sourceTree = "<group>"; };
+		43C6FF1628CA662A006C7AD1 /* EditTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTableViewController.swift; sourceTree = "<group>"; };
 		43CBEF8C28C3B07B0017A197 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		43CBEF8E28C3B0BD0017A197 /* SwiftGif.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftGif.swift; sourceTree = "<group>"; };
 		DE3FC03028B3D9F90046CBD7 /* ToDoListApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ToDoListApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -52,7 +53,6 @@
 		DE3FC04B28B3DBD20046CBD7 /* ToDoListItem+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ToDoListItem+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		DE8E27F928BF5C17003B98B3 /* CustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
 		DE8E27FB28C08F9C003B98B3 /* EntryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryViewController.swift; sourceTree = "<group>"; };
-		DE8E27FD28C08FE7003B98B3 /* TaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskViewController.swift; sourceTree = "<group>"; };
 		DE8E27FF28C0DFAD003B98B3 /* EditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -99,7 +99,6 @@
 				434F671528C9C77F00013427 /* WeeklyViewController.swift */,
 				DE3FC03728B3D9F90046CBD7 /* ViewController.swift */,
 				DE8E27FB28C08F9C003B98B3 /* EntryViewController.swift */,
-				DE8E27FD28C08FE7003B98B3 /* TaskViewController.swift */,
 				DE8E27F928BF5C17003B98B3 /* CustomTableViewCell.swift */,
 				DE8E27FF28C0DFAD003B98B3 /* EditViewController.swift */,
 				434F671328C8EC0900013427 /* TabBarViewController.swift */,
@@ -139,6 +138,7 @@
 				DE3FC03F28B3D9FA0046CBD7 /* Assets.xcassets */,
 				DE3FC04428B3D9FA0046CBD7 /* Info.plist */,
 				DE3FC03C28B3D9F90046CBD7 /* ToDoListApp.xcdatamodeld */,
+				43C6FF1628CA662A006C7AD1 /* EditTableViewController.swift */,
 			);
 			path = ToDoListApp;
 			sourceTree = "<group>";
@@ -224,6 +224,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				43CBEF8F28C3B0BD0017A197 /* SwiftGif.swift in Sources */,
+				43C6FF1728CA662A006C7AD1 /* EditTableViewController.swift in Sources */,
 				DE8E280028C0DFAD003B98B3 /* EditViewController.swift in Sources */,
 				DE3FC03828B3D9F90046CBD7 /* ViewController.swift in Sources */,
 				DE3FC03428B3D9F90046CBD7 /* AppDelegate.swift in Sources */,
@@ -240,7 +241,6 @@
 				DE3FC03E28B3D9F90046CBD7 /* ToDoListApp.xcdatamodeld in Sources */,
 				434F671428C8EC0900013427 /* TabBarViewController.swift in Sources */,
 				43CBEF8D28C3B07B0017A197 /* Extensions.swift in Sources */,
-				DE8E27FE28C08FE7003B98B3 /* TaskViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
