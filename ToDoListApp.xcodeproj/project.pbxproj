@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		431E346228D098990090C4F9 /* CompletionSummaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 431E346128D098990090C4F9 /* CompletionSummaryViewController.swift */; };
+		431E346428D0DC420090C4F9 /* TaskCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 431E346328D0DC420090C4F9 /* TaskCVC.swift */; };
+		431E346628D0DC720090C4F9 /* TagCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 431E346528D0DC720090C4F9 /* TagCVC.swift */; };
+		431E346828D0DEC50090C4F9 /* SectionHeaderRV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 431E346728D0DEC50090C4F9 /* SectionHeaderRV.swift */; };
 		434F671428C8EC0900013427 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 434F671328C8EC0900013427 /* TabBarViewController.swift */; };
 		434F671628C9C77F00013427 /* WeeklyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 434F671528C9C77F00013427 /* WeeklyViewController.swift */; };
 		434F671828C9C79F00013427 /* CalendarHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 434F671728C9C79F00013427 /* CalendarHelper.swift */; };
@@ -37,6 +41,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		431E346128D098990090C4F9 /* CompletionSummaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompletionSummaryViewController.swift; sourceTree = "<group>"; };
+		431E346328D0DC420090C4F9 /* TaskCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TaskCVC.swift; path = CollectionViewCells/TaskCVC.swift; sourceTree = "<group>"; };
+		431E346528D0DC720090C4F9 /* TagCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TagCVC.swift; path = CollectionViewCells/TagCVC.swift; sourceTree = "<group>"; };
+		431E346728D0DEC50090C4F9 /* SectionHeaderRV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SectionHeaderRV.swift; path = CollectionViewCells/SectionHeaderRV.swift; sourceTree = "<group>"; };
 		434F671328C8EC0900013427 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		434F671528C9C77F00013427 /* WeeklyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeeklyViewController.swift; sourceTree = "<group>"; };
 		434F671728C9C79F00013427 /* CalendarHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarHelper.swift; sourceTree = "<group>"; };
@@ -91,6 +99,7 @@
 		43C6FF2F28CABB16006C7AD1 /* CollectionViewCells */ = {
 			isa = PBXGroup;
 			children = (
+				43C6FF7528CF72AB006C7AD1 /* ImageCollectionViewCell.swift */,
 				DE8E27F928BF5C17003B98B3 /* CustomTableViewCell.swift */,
 			);
 			path = CollectionViewCells;
@@ -126,8 +135,12 @@
 		43CBEF9228C3B22B0017A197 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				43C6FF2F28CABB16006C7AD1 /* CollectionViewCells */,
 				DE3FC04128B3D9FA0046CBD7 /* LaunchScreen.storyboard */,
 				DE3FC03928B3D9F90046CBD7 /* Main.storyboard */,
+				431E346728D0DEC50090C4F9 /* SectionHeaderRV.swift */,
+				431E346528D0DC720090C4F9 /* TagCVC.swift */,
+				431E346328D0DC420090C4F9 /* TaskCVC.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -135,12 +148,12 @@
 		43CBEF9328C3B2320017A197 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				43C6FF2F28CABB16006C7AD1 /* CollectionViewCells */,
 				434F671528C9C77F00013427 /* WeeklyViewController.swift */,
 				DE3FC03728B3D9F90046CBD7 /* ViewController.swift */,
 				DE8E27FB28C08F9C003B98B3 /* EntryViewController.swift */,
 				DE8E27FF28C0DFAD003B98B3 /* EditViewController.swift */,
 				434F671328C8EC0900013427 /* TabBarViewController.swift */,
+				431E346128D098990090C4F9 /* CompletionSummaryViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -166,7 +179,6 @@
 			children = (
 				43C6FF7928CF742A006C7AD1 /* HomeViewController.swift */,
 				434F671928C9C7B400013427 /* CalendarCell.swift */,
-				43C6FF7528CF72AB006C7AD1 /* ImageCollectionViewCell.swift */,
 				434F671728C9C79F00013427 /* CalendarHelper.swift */,
 				DE3FC03328B3D9F90046CBD7 /* AppDelegate.swift */,
 				434F671B28C9C7D400013427 /* Event.swift */,
@@ -263,11 +275,14 @@
 				43C6FF7628CF72AB006C7AD1 /* ImageCollectionViewCell.swift in Sources */,
 				DE3FC03828B3D9F90046CBD7 /* ViewController.swift in Sources */,
 				DE3FC03428B3D9F90046CBD7 /* AppDelegate.swift in Sources */,
+				431E346628D0DC720090C4F9 /* TagCVC.swift in Sources */,
 				43C6FF1F28CA7541006C7AD1 /* Category+CoreDataClass.swift in Sources */,
 				43C6FF7A28CF742A006C7AD1 /* HomeViewController.swift in Sources */,
 				DE3FC03628B3D9F90046CBD7 /* SceneDelegate.swift in Sources */,
+				431E346828D0DEC50090C4F9 /* SectionHeaderRV.swift in Sources */,
 				43C6FF2028CA7541006C7AD1 /* Category+CoreDataProperties.swift in Sources */,
 				43C6FF7C28CF7DDD006C7AD1 /* CompLayout.swift in Sources */,
+				431E346428D0DC420090C4F9 /* TaskCVC.swift in Sources */,
 				43C6FF7428CEFD88006C7AD1 /* ToDoListItem+CoreDataClass.swift in Sources */,
 				43C6FF7E28D03073006C7AD1 /* CoreDataSections.swift in Sources */,
 				DE8E27FA28BF5C17003B98B3 /* CustomTableViewCell.swift in Sources */,
@@ -277,6 +292,7 @@
 				434F671E28C9C7D900013427 /* EventCell.swift in Sources */,
 				DE8E27FC28C08F9C003B98B3 /* EntryViewController.swift in Sources */,
 				434F671828C9C79F00013427 /* CalendarHelper.swift in Sources */,
+				431E346228D098990090C4F9 /* CompletionSummaryViewController.swift in Sources */,
 				DE3FC03E28B3D9F90046CBD7 /* ToDoListApp.xcdatamodeld in Sources */,
 				434F671428C8EC0900013427 /* TabBarViewController.swift in Sources */,
 				43CBEF8D28C3B07B0017A197 /* Extensions.swift in Sources */,
