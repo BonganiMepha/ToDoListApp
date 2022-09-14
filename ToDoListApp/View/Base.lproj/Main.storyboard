@@ -278,10 +278,10 @@
             </objects>
             <point key="canvasLocation" x="2893" y="-860"/>
         </scene>
-        <!--Home View Controller-->
+        <!--Dash Board View Controller-->
         <scene sceneID="z21-25-JMa">
             <objects>
-                <viewController id="pcc-gA-0BW" customClass="HomeViewController" customModule="ToDoListApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="pcc-gA-0BW" customClass="DashBoardViewController" customModule="ToDoListApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="0Qz-9x-K8B">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -425,6 +425,9 @@
                     <navigationItem key="navigationItem" id="kYg-QZ-2FO">
                         <barButtonItem key="rightBarButtonItem" style="plain" systemItem="add" id="95Y-vD-hoA">
                             <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <action selector="addNewToDash:" destination="pcc-gA-0BW" id="Q46-j9-1Ke"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
@@ -434,6 +437,47 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3NO-Kb-t0m" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4992.753623188406" y="-741.29464285714278"/>
+        </scene>
+        <!--Group View Controller-->
+        <scene sceneID="yAi-OX-uw6">
+            <objects>
+                <viewController id="w2s-fQ-tEd" customClass="GroupViewController" customModule="ToDoListApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8H6-yT-pne">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="iM8-GF-uMW">
+                                <rect key="frame" x="0.0" y="48" width="414" height="814"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="uWO-BF-XBD">
+                                        <rect key="frame" x="0.0" y="50" width="414" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="uWO-BF-XBD" id="lmF-Ke-Jd8">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="w2s-fQ-tEd" id="ioo-do-NvK"/>
+                                    <outlet property="delegate" destination="w2s-fQ-tEd" id="ivH-eK-b8R"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="B9q-u3-KDv"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="B9q-u3-KDv" firstAttribute="trailing" secondItem="iM8-GF-uMW" secondAttribute="trailing" id="C6X-1H-08u"/>
+                            <constraint firstItem="iM8-GF-uMW" firstAttribute="leading" secondItem="B9q-u3-KDv" secondAttribute="leading" id="HEy-Xa-MaO"/>
+                            <constraint firstItem="iM8-GF-uMW" firstAttribute="top" secondItem="B9q-u3-KDv" secondAttribute="top" id="fd7-6Z-dAq"/>
+                            <constraint firstItem="B9q-u3-KDv" firstAttribute="bottom" secondItem="iM8-GF-uMW" secondAttribute="bottom" id="h0b-Ke-qNc"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lCh-fE-Elt" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5750" y="-737"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -954,11 +998,11 @@
             </objects>
             <point key="canvasLocation" x="4082.6086956521744" y="-1411.6071428571429"/>
         </scene>
-        <!--Item-->
+        <!--Dash-->
         <scene sceneID="kAS-Lr-uun">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="5Zt-wO-zeA" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="fmY-Wp-jlz"/>
+                    <tabBarItem key="tabBarItem" title="Dash" image="rectangle.3.group.fill" catalog="system" id="fmY-Wp-jlz"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="JNX-Ga-bYD">
                         <rect key="frame" x="0.0" y="48" width="414" height="44"/>
@@ -981,6 +1025,7 @@
         <image name="chevron.right.square.fill" catalog="system" width="128" height="114"/>
         <image name="list.bullet.clipboard" catalog="system" width="103" height="128"/>
         <image name="list.dash" catalog="system" width="128" height="85"/>
+        <image name="rectangle.3.group.fill" catalog="system" width="128" height="81"/>
         <systemColor name="labelColor">
             <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>

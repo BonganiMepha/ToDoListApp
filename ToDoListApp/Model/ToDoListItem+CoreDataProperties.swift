@@ -21,6 +21,7 @@ extension ToDoListItem {
     @NSManaged public var isComplete: Bool
     @NSManaged public var isArchived: Bool
     @NSManaged public var taskDescription: String?
+    @NSManaged public var list: Category
     
 
 }

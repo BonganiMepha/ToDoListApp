@@ -8,7 +8,7 @@
 import UIKit
 import CoreData
 
-class HomeViewController: UIViewController {
+class DashBoardViewController: UIViewController {
 
     @IBOutlet weak var collectionVIew: UICollectionView!
      let dogImages:[UIImage] = Array(1 ... 11).map{UIImage(named: String($0))!}
@@ -21,10 +21,21 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         collectionVIew.collectionViewLayout = createLayout()
-        collectionVIew.register(TitleSupplementaryView.self, forSupplementaryViewOfKind: HomeViewController.categoryHeaderId, withReuseIdentifier: headerId)
+        collectionVIew.register(TitleSupplementaryView.self, forSupplementaryViewOfKind: DashBoardViewController.categoryHeaderId, withReuseIdentifier: headerId)
         getAllItems()
     }
     
+    @IBAction func addNewToDash(_ sender: Any) {
+        let ac = UIAlertController(title: "Add New", message: nil, preferredStyle: .actionSheet)
+        ac.addAction(UIAlertAction(title: "Group", style: .default, handler: { action in
+            print("Go to New group view")
+        }))
+        ac.addAction(UIAlertAction(title: "Task", style: .default, handler: { action in
+            print("Go to new item view")
+        }))
+        ac.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+        present(ac, animated: true)
+    }
     func getAllItems() {
         do {
             HomeViewTasks  = try context.fetch(ToDoListItem.fetchRequest())
@@ -48,7 +59,7 @@ class HomeViewController: UIViewController {
                 let section = NSCollectionLayoutSection(group: group)
                 section.orthogonalScrollingBehavior = .paging
                 section.boundarySupplementaryItems = [
-                    .init(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .absolute(50)), elementKind: HomeViewController.categoryHeaderId, alignment: .topLeading)
+                    .init(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .absolute(50)), elementKind: DashBoardViewController.categoryHeaderId, alignment: .topLeading)
                 ]
                 return section
             }else if sectionNumber == 1{
@@ -76,7 +87,7 @@ class HomeViewController: UIViewController {
     }
 }
 
-extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSource{
+extension DashBoardViewController: UICollectionViewDelegate, UICollectionViewDataSource{
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         3
     }
@@ -115,9 +126,6 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
         }
   
     }
-    
-
-    
 }
 
 final class TitleSupplementaryView: UICollectionReusableView{
