@@ -105,13 +105,6 @@
 			path = CollectionViewCells;
 			sourceTree = "<group>";
 		};
-		43C6FF7028CEFD88006C7AD1 /* ToDoListItem */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ToDoListItem;
-			sourceTree = "<group>";
-		};
 		43CBEF8B28C3B0600017A197 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
@@ -124,7 +117,6 @@
 		43CBEF9128C3B2060017A197 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				43C6FF7028CEFD88006C7AD1 /* ToDoListItem */,
 				43C6FF7228CEFD88006C7AD1 /* ToDoListItem+CoreDataClass.swift */,
 				43C6FF7128CEFD88006C7AD1 /* ToDoListItem+CoreDataProperties.swift */,
 				43C6FF1C28CA72EE006C7AD1 /* Category */,
