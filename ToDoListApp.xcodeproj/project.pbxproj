@@ -11,13 +11,18 @@
 		431E346428D0DC420090C4F9 /* TaskCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 431E346328D0DC420090C4F9 /* TaskCVC.swift */; };
 		431E346628D0DC720090C4F9 /* TagCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 431E346528D0DC720090C4F9 /* TagCVC.swift */; };
 		431E346828D0DEC50090C4F9 /* SectionHeaderRV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 431E346728D0DEC50090C4F9 /* SectionHeaderRV.swift */; };
-		432C544B28D24CD100D8727B /* GroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 432C544A28D24CD100D8727B /* GroupViewController.swift */; };
+		432C544D28D2501500D8727B /* NewGroupTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 432C544C28D2501500D8727B /* NewGroupTableViewController.swift */; };
 		434F671428C8EC0900013427 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 434F671328C8EC0900013427 /* TabBarViewController.swift */; };
 		434F671628C9C77F00013427 /* WeeklyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 434F671528C9C77F00013427 /* WeeklyViewController.swift */; };
 		434F671828C9C79F00013427 /* CalendarHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 434F671728C9C79F00013427 /* CalendarHelper.swift */; };
 		434F671A28C9C7B400013427 /* CalendarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 434F671928C9C7B400013427 /* CalendarCell.swift */; };
 		434F671C28C9C7D400013427 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 434F671B28C9C7D400013427 /* Event.swift */; };
 		434F671E28C9C7D900013427 /* EventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 434F671D28C9C7D900013427 /* EventCell.swift */; };
+		43B6FBAD28D36D7400B25DED /* GroupTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B6FBAC28D36D7400B25DED /* GroupTVC.swift */; };
+		43B6FBAF28D377D400B25DED /* GroupTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B6FBAE28D377D400B25DED /* GroupTableViewCell.swift */; };
+		43B6FBB128D382E400B25DED /* TaskTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B6FBB028D382E400B25DED /* TaskTableViewController.swift */; };
+		43B6FBB328D3A43600B25DED /* NewTaskTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B6FBB228D3A43600B25DED /* NewTaskTableViewController.swift */; };
+		43B6FBB528D3B44600B25DED /* NewTaskTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B6FBB428D3B44600B25DED /* NewTaskTableViewCell.swift */; };
 		43C6FF1728CA662A006C7AD1 /* EditTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43C6FF1628CA662A006C7AD1 /* EditTableViewController.swift */; };
 		43C6FF1F28CA7541006C7AD1 /* Category+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43C6FF1D28CA7541006C7AD1 /* Category+CoreDataClass.swift */; };
 		43C6FF2028CA7541006C7AD1 /* Category+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43C6FF1E28CA7541006C7AD1 /* Category+CoreDataProperties.swift */; };
@@ -46,13 +51,18 @@
 		431E346328D0DC420090C4F9 /* TaskCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TaskCVC.swift; path = CollectionViewCells/TaskCVC.swift; sourceTree = "<group>"; };
 		431E346528D0DC720090C4F9 /* TagCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TagCVC.swift; path = CollectionViewCells/TagCVC.swift; sourceTree = "<group>"; };
 		431E346728D0DEC50090C4F9 /* SectionHeaderRV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SectionHeaderRV.swift; path = CollectionViewCells/SectionHeaderRV.swift; sourceTree = "<group>"; };
-		432C544A28D24CD100D8727B /* GroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupViewController.swift; sourceTree = "<group>"; };
+		432C544C28D2501500D8727B /* NewGroupTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewGroupTableViewController.swift; sourceTree = "<group>"; };
 		434F671328C8EC0900013427 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		434F671528C9C77F00013427 /* WeeklyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeeklyViewController.swift; sourceTree = "<group>"; };
 		434F671728C9C79F00013427 /* CalendarHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarHelper.swift; sourceTree = "<group>"; };
 		434F671928C9C7B400013427 /* CalendarCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarCell.swift; sourceTree = "<group>"; };
 		434F671B28C9C7D400013427 /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		434F671D28C9C7D900013427 /* EventCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventCell.swift; sourceTree = "<group>"; };
+		43B6FBAC28D36D7400B25DED /* GroupTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupTVC.swift; sourceTree = "<group>"; };
+		43B6FBAE28D377D400B25DED /* GroupTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupTableViewCell.swift; sourceTree = "<group>"; };
+		43B6FBB028D382E400B25DED /* TaskTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskTableViewController.swift; sourceTree = "<group>"; };
+		43B6FBB228D3A43600B25DED /* NewTaskTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTaskTableViewController.swift; sourceTree = "<group>"; };
+		43B6FBB428D3B44600B25DED /* NewTaskTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTaskTableViewCell.swift; sourceTree = "<group>"; };
 		43C6FF1628CA662A006C7AD1 /* EditTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTableViewController.swift; sourceTree = "<group>"; };
 		43C6FF1D28CA7541006C7AD1 /* Category+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Category+CoreDataClass.swift"; sourceTree = "<group>"; };
 		43C6FF1E28CA7541006C7AD1 /* Category+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Category+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -101,8 +111,10 @@
 		43C6FF2F28CABB16006C7AD1 /* CollectionViewCells */ = {
 			isa = PBXGroup;
 			children = (
+				43B6FBAE28D377D400B25DED /* GroupTableViewCell.swift */,
 				43C6FF7528CF72AB006C7AD1 /* ImageCollectionViewCell.swift */,
 				DE8E27F928BF5C17003B98B3 /* CustomTableViewCell.swift */,
+				43B6FBB428D3B44600B25DED /* NewTaskTableViewCell.swift */,
 			);
 			path = CollectionViewCells;
 			sourceTree = "<group>";
@@ -142,13 +154,17 @@
 		43CBEF9328C3B2320017A197 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				432C544A28D24CD100D8727B /* GroupViewController.swift */,
+				43B6FBAC28D36D7400B25DED /* GroupTVC.swift */,
+				43C6FF7928CF742A006C7AD1 /* DashBoardViewController.swift */,
 				434F671528C9C77F00013427 /* WeeklyViewController.swift */,
 				DE3FC03728B3D9F90046CBD7 /* ViewController.swift */,
 				DE8E27FB28C08F9C003B98B3 /* EntryViewController.swift */,
 				DE8E27FF28C0DFAD003B98B3 /* EditViewController.swift */,
 				434F671328C8EC0900013427 /* TabBarViewController.swift */,
 				431E346128D098990090C4F9 /* CompletionSummaryViewController.swift */,
+				432C544C28D2501500D8727B /* NewGroupTableViewController.swift */,
+				43B6FBB028D382E400B25DED /* TaskTableViewController.swift */,
+				43B6FBB228D3A43600B25DED /* NewTaskTableViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -172,7 +188,6 @@
 		DE3FC03228B3D9F90046CBD7 /* ToDoListApp */ = {
 			isa = PBXGroup;
 			children = (
-				43C6FF7928CF742A006C7AD1 /* DashBoardViewController.swift */,
 				434F671928C9C7B400013427 /* CalendarCell.swift */,
 				434F671728C9C79F00013427 /* CalendarHelper.swift */,
 				DE3FC03328B3D9F90046CBD7 /* AppDelegate.swift */,
@@ -267,24 +282,29 @@
 				43CBEF8F28C3B0BD0017A197 /* SwiftGif.swift in Sources */,
 				43C6FF1728CA662A006C7AD1 /* EditTableViewController.swift in Sources */,
 				DE8E280028C0DFAD003B98B3 /* EditViewController.swift in Sources */,
+				43B6FBAD28D36D7400B25DED /* GroupTVC.swift in Sources */,
 				43C6FF7628CF72AB006C7AD1 /* ImageCollectionViewCell.swift in Sources */,
 				DE3FC03828B3D9F90046CBD7 /* ViewController.swift in Sources */,
+				43B6FBB328D3A43600B25DED /* NewTaskTableViewController.swift in Sources */,
 				DE3FC03428B3D9F90046CBD7 /* AppDelegate.swift in Sources */,
 				431E346628D0DC720090C4F9 /* TagCVC.swift in Sources */,
 				43C6FF1F28CA7541006C7AD1 /* Category+CoreDataClass.swift in Sources */,
-				432C544B28D24CD100D8727B /* GroupViewController.swift in Sources */,
 				43C6FF7A28CF742A006C7AD1 /* DashBoardViewController.swift in Sources */,
 				DE3FC03628B3D9F90046CBD7 /* SceneDelegate.swift in Sources */,
 				431E346828D0DEC50090C4F9 /* SectionHeaderRV.swift in Sources */,
+				432C544D28D2501500D8727B /* NewGroupTableViewController.swift in Sources */,
 				43C6FF2028CA7541006C7AD1 /* Category+CoreDataProperties.swift in Sources */,
 				43C6FF7C28CF7DDD006C7AD1 /* CompLayout.swift in Sources */,
 				431E346428D0DC420090C4F9 /* TaskCVC.swift in Sources */,
+				43B6FBAF28D377D400B25DED /* GroupTableViewCell.swift in Sources */,
 				43C6FF7428CEFD88006C7AD1 /* ToDoListItem+CoreDataClass.swift in Sources */,
+				43B6FBB128D382E400B25DED /* TaskTableViewController.swift in Sources */,
 				43C6FF7E28D03073006C7AD1 /* CoreDataSections.swift in Sources */,
 				DE8E27FA28BF5C17003B98B3 /* CustomTableViewCell.swift in Sources */,
 				434F671A28C9C7B400013427 /* CalendarCell.swift in Sources */,
 				434F671C28C9C7D400013427 /* Event.swift in Sources */,
 				434F671628C9C77F00013427 /* WeeklyViewController.swift in Sources */,
+				43B6FBB528D3B44600B25DED /* NewTaskTableViewCell.swift in Sources */,
 				434F671E28C9C7D900013427 /* EventCell.swift in Sources */,
 				DE8E27FC28C08F9C003B98B3 /* EntryViewController.swift in Sources */,
 				434F671828C9C79F00013427 /* CalendarHelper.swift in Sources */,

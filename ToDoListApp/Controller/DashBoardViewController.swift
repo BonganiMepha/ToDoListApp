@@ -14,6 +14,7 @@ class DashBoardViewController: UIViewController {
      let dogImages:[UIImage] = Array(1 ... 11).map{UIImage(named: String($0))!}
      let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     private var HomeViewTasks = [ToDoListItem]()
+    private var homeGroups = [Category]()
     static let categoryHeaderId = "categoryHeaderId"
     let headerId = "headerId"
     
@@ -24,21 +25,28 @@ class DashBoardViewController: UIViewController {
         collectionVIew.register(TitleSupplementaryView.self, forSupplementaryViewOfKind: DashBoardViewController.categoryHeaderId, withReuseIdentifier: headerId)
         getAllItems()
     }
+    override func viewWillAppear(_ animated: Bool) {
+        collectionVIew.reloadData()
+    }
     
     @IBAction func addNewToDash(_ sender: Any) {
         let ac = UIAlertController(title: "Add New", message: nil, preferredStyle: .actionSheet)
         ac.addAction(UIAlertAction(title: "Group", style: .default, handler: { action in
-            print("Go to New group view")
+            let vc = self.storyboard?.instantiateViewController(withIdentifier: "NewGroupView") as! NewGroupTableViewController
+            self.navigationController?.pushViewController(vc , animated: true)
+            
         }))
         ac.addAction(UIAlertAction(title: "Task", style: .default, handler: { action in
             print("Go to new item view")
         }))
         ac.addAction(UIAlertAction(title: "Cancel", style: .cancel))
         present(ac, animated: true)
+        print(HomeViewTasks.count)
     }
     func getAllItems() {
         do {
             HomeViewTasks  = try context.fetch(ToDoListItem.fetchRequest())
+            homeGroups = try context.fetch(Category.fetchRequest())
             DispatchQueue.main.async {
                 self.collectionVIew.reloadData()
             }
@@ -94,33 +102,49 @@ extension DashBoardViewController: UICollectionViewDelegate, UICollectionViewDat
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if section == 0 {
-            return 2
+            if HomeViewTasks.count == 0 {
+                return 0
+            }else{
+                return HomeViewTasks.count
+            }
+            
         }else if section == 2{
-            return 2
+            return 3
         }else{
-            return 2
+            if homeGroups.count == 0 {
+                return 0
+            }else{
+                return homeGroups.count
+            }
         }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let model = HomeViewTasks[indexPath.row]
+          let model = HomeViewTasks[indexPath.row] 
+//        let groupModel = homeGroups[indexPath.row]
         switch indexPath.section{
         case 0:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "GroupCV", for: indexPath) as! ImageCollectionViewCell
-            cell.setup(image: dogImages[indexPath.row],text: String(indexPath.row))
-            cell.layer.cornerRadius = 20
+            cell.setup(text: String(indexPath.row))
+//            cell.backgroundColor = UIColor.blue.withAlphaComponent(0.2)
+            cell.layer.cornerRadius = 10
             return cell
         case 1:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "GroupCV", for: indexPath) as! ImageCollectionViewCell
-            cell.setup(image: dogImages[indexPath.row],text: String(indexPath.row))
-            cell.layer.cornerRadius = 20
+            cell.setup(text: String(indexPath.row))
+            cell.layer.cornerRadius = 10
             return cell
         case 2:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TaskCVC", for: indexPath) as! TaskCVC
             cell.setUp(desc: model.taskDescription ?? "", title: model.name ?? "", button: model.isComplete)
-            cell.layer.cornerRadius = 20
+            cell.layer.cornerRadius = 10
             cell.contentView.backgroundColor = UIColor.gray
+
             return cell
+//            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "GroupCV", for: indexPath) as! ImageCollectionViewCell
+//            cell.setup(text: String(indexPath.row))
+//            cell.layer.cornerRadius = 10
+//            return cell
         default:
             return UICollectionViewCell()
         }

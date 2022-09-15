@@ -8,11 +8,11 @@
 import UIKit
 
 class ImageCollectionViewCell: UICollectionViewCell {
-    @IBOutlet weak var Myimage: UIImageView!
+    
     @IBOutlet weak var imageText: UILabel!
     
-    func setup(image: UIImage, text: String){
-        Myimage.image = image
+    func setup(text: String){
+        
         imageText.text = text
     }
 }

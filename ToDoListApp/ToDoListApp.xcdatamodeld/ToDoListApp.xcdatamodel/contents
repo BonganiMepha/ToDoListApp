@@ -3,11 +3,6 @@
     <entity name="Category" representedClassName="Category" syncable="YES">
         <attribute name="catName" optional="YES" attributeType="String"/>
         <relationship name="todoListItem" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ToDoListItem" inverseName="origin" inverseEntity="ToDoListItem"/>
-        <uniquenessConstraints>
-            <uniquenessConstraint>
-                <constraint value="catName"/>
-            </uniquenessConstraint>
-        </uniquenessConstraints>
     </entity>
     <entity name="ToDoListItem" representedClassName="ToDoListItem" syncable="YES">
         <attribute name="createdAt" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
@@ -15,6 +10,6 @@
         <attribute name="isComplete" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="name" optional="YES" attributeType="String"/>
         <attribute name="taskDescription" optional="YES" attributeType="String"/>
-        <relationship name="origin" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Category" inverseName="todoListItem" inverseEntity="Category"/>
+        <relationship name="origin" maxCount="1" deletionRule="Nullify" destinationEntity="Category" inverseName="todoListItem" inverseEntity="Category"/>
     </entity>
 </model>

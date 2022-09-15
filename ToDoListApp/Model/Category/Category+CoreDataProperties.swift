@@ -16,7 +16,7 @@ extension Category {
         return NSFetchRequest<Category>(entityName: "Category")
     }
 
-    @NSManaged public var catName: String?
+    @NSManaged public var catName: String
     @NSManaged public var todoListItem: Set<ToDoListItem>
 
 }
