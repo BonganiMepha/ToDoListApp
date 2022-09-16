@@ -2,14 +2,15 @@
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="21279" systemVersion="21G115" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Category" representedClassName="Category" syncable="YES">
         <attribute name="catName" optional="YES" attributeType="String"/>
-        <relationship name="todoListItem" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ToDoListItem" inverseName="origin" inverseEntity="ToDoListItem"/>
+        <relationship name="todoListItem" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="ToDoListItem" inverseName="origin" inverseEntity="ToDoListItem"/>
     </entity>
     <entity name="ToDoListItem" representedClassName="ToDoListItem" syncable="YES">
+        <attribute name="attachment" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES"/>
         <attribute name="createdAt" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
-        <attribute name="isArchived" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
-        <attribute name="isComplete" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="isArchived" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
+        <attribute name="isComplete" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
         <attribute name="name" optional="YES" attributeType="String"/>
         <attribute name="taskDescription" optional="YES" attributeType="String"/>
-        <relationship name="origin" maxCount="1" deletionRule="Nullify" destinationEntity="Category" inverseName="todoListItem" inverseEntity="Category"/>
+        <relationship name="origin" maxCount="1" deletionRule="No Action" destinationEntity="Category" inverseName="todoListItem" inverseEntity="Category"/>
     </entity>
 </model>

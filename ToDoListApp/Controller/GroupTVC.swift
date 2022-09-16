@@ -10,6 +10,7 @@ import CoreData
 
 class GroupTVC: UITableViewController {
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    var models = [ToDoListItem]()
     private lazy var fetchedResultsController: NSFetchedResultsController<Category> = {
         //create the fetch request
         let fetchRequest: NSFetchRequest<Category> = Category.fetchRequest()
@@ -102,9 +103,24 @@ extension GroupTVC{
         let cell  = tableView.dequeueReusableCell(withIdentifier: "CategoryCell" , for: indexPath) as! GroupTableViewCell
         //takes an index path and returns an instance of fetched result
         let list = fetchedResultsController.object(at: indexPath)
-        cell.configure(with: list.catName ?? "")
+        models = getItemsWithGroupName(with: list.catName )
+        cell.configure(with: list.catName, amount: models.count)
         
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        true
+    }
+    
+    //asks to data source to commit the deletion
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete{
+            let list  = fetchedResultsController.object(at: indexPath)
+            context.delete(list)
+            
+            try? context.save()
+        }
     }
 }
 
@@ -139,7 +155,7 @@ extension GroupTVC: NSFetchedResultsControllerDelegate{
         guard let indexPath = indexPath, let cell = tableView.cellForRow(at: indexPath) as? GroupTableViewCell else {
           return
         }
-          cell.configure(with: list.catName ?? "")
+          cell.configure(with: list.catName)
         default:
         return
       }
@@ -148,5 +164,21 @@ extension GroupTVC: NSFetchedResultsControllerDelegate{
     //this is called once the changes are worked through
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
       tableView.endUpdates()
+    }
+}
+
+extension GroupTVC{
+    func getItemsWithGroupName(with: String) -> [ToDoListItem] {
+        do {
+            models = try context.fetch(ToDoListItem.fetchRequest())
+            return models.filter { item in
+                item.origin.catName == with && item.isComplete == true
+            }
+        }
+        catch {
+            //error
+            print(error.localizedDescription)
+        }
+        return [ToDoListItem]()
     }
 }

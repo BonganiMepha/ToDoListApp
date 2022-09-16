@@ -8,15 +8,12 @@
 import UIKit
 protocol isComplete {
     func toggleisComplete ( for cell: UITableViewCell)
-    
 }
 
 class CustomTableViewCell: UITableViewCell {
 
     
     @IBOutlet weak var isCompleted: UIButton!
-    
-    
     var isCompleteDelegate: isComplete?
     
     override func awakeFromNib() {

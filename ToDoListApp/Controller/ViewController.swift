@@ -7,18 +7,24 @@
 
 import UIKit
 
-
+enum ViewsToShow: Int{
+    case All = 0
+    case Archived = 1
+    case Done = 2
+    case Overdue = 3
+}
 
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
+    @IBOutlet weak var viewsToDisplay: UISegmentedControl!
     @IBOutlet weak var tableView: UITableView!
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     private var models = [ToDoListItem]()
     private var unarch = [ToDoListItem]()
-
+    private var done = [ToDoListItem]()
     var editIndexPath: Int?
     var selectedItem: ToDoListItem?
-
+    var selectedView: ViewsToShow = .All
 
     
     
@@ -26,16 +32,44 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         super.viewDidLoad()
         title = "Task"
         getAllItems()
+        
         tableView.delegate = self
         tableView.dataSource = self
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(didTapAdd))
+        viewsToDisplay.selectedSegmentIndex = selectedView.rawValue
+        
     }
     override func viewWillAppear(_ animated: Bool) {
         tableView.reloadData()
         getAllItems()
     }
     
-     @IBAction func didTapAdd () {
+    @IBAction func changeViewOnSegment(_ sender: UISegmentedControl) {
+        switch sender.selectedSegmentIndex{
+        case 0:
+            selectedView = .All
+            models = getSelectedItems(viewToShow: .All)
+            tableView.reloadData()
+        case 1:
+            selectedView = .Archived
+            models = getSelectedItems(viewToShow: .Archived)
+            tableView.reloadData()
+//            print(models.count)
+        case 2:
+            selectedView = .Done
+            models = getSelectedItems(viewToShow: .Done)
+            tableView.reloadData()
+//            print(models.count)
+        case 3:
+            selectedView = .Overdue
+            models = getSelectedItems(viewToShow: .Overdue)
+            tableView.reloadData()
+        default:
+            return
+        }
+    }
+    
+    @IBAction func didTapAdd () {
          let vc = storyboard?.instantiateViewController(withIdentifier: "Entry") as! EntryViewController
          vc.title = "New Task"
          navigationController?.pushViewController(vc , animated: true)
@@ -80,14 +114,24 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             print(item.isArchived)
             do{
                 try self.context.save()
+                self.tableView.reloadData()
             }
             catch{
-                
+                print(error.localizedDescription)
             }
                 
             }
+        
+        let deleteAction = UIContextualAction(style: .destructive, title: "Delete") {(action, view, completion) in
+            let item = self.models[indexPath.row]
+            self.models.remove(at: indexPath.row)
+            self.context.delete(item)
+            try? self.context.save()
+            self.tableView.reloadData()
+            
+        }
             archiveAction.backgroundColor = .purple
-        return UISwipeActionsConfiguration(actions: [editAction, archiveAction])
+        return UISwipeActionsConfiguration(actions: [editAction, archiveAction,deleteAction])
         
     }
     
@@ -102,6 +146,58 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     //MARK: - Core Data
 
+    func getSelectedItems(viewToShow: ViewsToShow) -> [ToDoListItem]{
+        switch viewToShow {
+        case .All:
+            do {
+                models = try context.fetch(ToDoListItem.fetchRequest())
+                DispatchQueue.main.async {
+                    self.tableView.reloadData()
+                }
+                return models
+            }
+            catch {
+                print(error.localizedDescription)
+            }
+        case .Archived:
+            do {
+                models = try context.fetch(ToDoListItem.fetchRequest())
+                var unarry = models.filter { items in
+                    return items.isArchived == true
+                }
+                 return unarry
+            }
+            catch {
+                print(error.localizedDescription)
+            }
+        case .Done:
+            do {
+                models = try context.fetch(ToDoListItem.fetchRequest())
+                return models.filter { items in
+                    items.isComplete == true
+                }
+            }
+            catch {
+                //error
+                print(error.localizedDescription)
+            }
+        case .Overdue:
+            do {
+                models = try context.fetch(ToDoListItem.fetchRequest())
+                return models.filter { items in
+                    items.createdAt ?? Date() > Date()
+                }
+            }
+            catch {
+                //error
+                print(error.localizedDescription)
+            }
+        default:
+            return [ToDoListItem]()
+        }
+        return [ToDoListItem]()
+    }
+    
     func getAllItems() {
         do {
             models = try context.fetch(ToDoListItem.fetchRequest())
@@ -112,9 +208,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         catch {
             //error
             print(error.localizedDescription)
-        }
-        
-    
+        }    
     }
     
     func createItem(name: String) {
@@ -159,7 +253,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     func toggleComplete(for index: Int) {
         models[index].isComplete.toggle()
-        
         do {
             try context.save()
         }
@@ -173,12 +266,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 }
 extension ViewController: isComplete{
     func toggleisComplete(for cell: UITableViewCell) {
-        
         if let indexPath = tableView.indexPath(for: cell) {
-            
             toggleComplete(for: indexPath.row)
             tableView.reloadData()
-            self.title = "Task"
         }
     }
 }

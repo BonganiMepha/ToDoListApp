@@ -227,6 +227,9 @@
                                                 <constraint firstAttribute="width" constant="40" id="V2v-CZ-cEq"/>
                                             </constraints>
                                         </imageView>
+                                        <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="T0p-ug-lHO">
+                                            <rect key="frame" x="20" y="65" width="383" height="4"/>
+                                        </progressView>
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="vwI-LM-wJn" firstAttribute="top" relation="greaterThanOrEqual" secondItem="iE6-2G-hJg" secondAttribute="top" constant="5" id="7QM-Si-Z4q"/>
@@ -234,12 +237,16 @@
                                         <constraint firstAttribute="trailing" secondItem="laJ-Va-4pK" secondAttribute="trailing" constant="11" id="fOm-El-ifY"/>
                                         <constraint firstItem="laJ-Va-4pK" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="vwI-LM-wJn" secondAttribute="trailing" constant="20" id="gti-Fc-buW"/>
                                         <constraint firstItem="laJ-Va-4pK" firstAttribute="centerY" secondItem="iE6-2G-hJg" secondAttribute="centerY" id="ioX-dK-LYf"/>
+                                        <constraint firstItem="T0p-ug-lHO" firstAttribute="top" secondItem="vwI-LM-wJn" secondAttribute="bottom" constant="14" id="lKP-sv-GbZ"/>
                                         <constraint firstItem="vwI-LM-wJn" firstAttribute="leading" secondItem="iE6-2G-hJg" secondAttribute="leading" constant="20" symbolic="YES" id="plJ-ex-0Ng"/>
+                                        <constraint firstItem="T0p-ug-lHO" firstAttribute="leading" secondItem="iE6-2G-hJg" secondAttribute="leading" constant="20" symbolic="YES" id="rON-MD-HoN"/>
+                                        <constraint firstAttribute="trailing" secondItem="T0p-ug-lHO" secondAttribute="trailing" constant="11" id="tXo-Aa-CLA"/>
                                         <constraint firstItem="vwI-LM-wJn" firstAttribute="centerY" secondItem="laJ-Va-4pK" secondAttribute="centerY" id="z9W-Yd-FSg"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="GroupTextLabel" destination="vwI-LM-wJn" id="gnS-Pn-Vkh"/>
+                                    <outlet property="groupCompletionBar" destination="T0p-ug-lHO" id="p9l-SY-4zE"/>
                                     <segue destination="16G-Vj-rxP" kind="show" identifier="goToTodoItem" id="fJI-FN-ykn"/>
                                 </connections>
                             </tableViewCell>
@@ -359,29 +366,59 @@
                             </tableViewSection>
                             <tableViewSection headerTitle="More Info" id="Ipp-rE-81D">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" id="kOQ-Ij-Xtm">
-                                        <rect key="frame" x="0.0" y="410.5" width="414" height="43.5"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" rowHeight="60" id="kOQ-Ij-Xtm">
+                                        <rect key="frame" x="0.0" y="410.5" width="414" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="kOQ-Ij-Xtm" id="Hqm-IG-p5Z">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="60"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Due Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tg2-Fx-Z3S">
-                                                    <rect key="frame" x="20" y="11.5" width="71" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Attachment" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tg2-Fx-Z3S">
+                                                    <rect key="frame" x="20" y="19.5" width="89" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="rhQ-3B-Ftj">
+                                                    <rect key="frame" x="350" y="8" width="44" height="44"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="rhQ-3B-Ftj" secondAttribute="height" multiplier="1:1" id="Lqg-E4-Yua"/>
+                                                    </constraints>
+                                                </imageView>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstItem="rhQ-3B-Ftj" firstAttribute="leading" secondItem="Hqm-IG-p5Z" secondAttribute="leading" constant="350" id="8Ph-Im-HMG"/>
                                                 <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="tg2-Fx-Z3S" secondAttribute="trailing" constant="20" id="9b8-3F-T26"/>
+                                                <constraint firstItem="rhQ-3B-Ftj" firstAttribute="centerY" secondItem="tg2-Fx-Z3S" secondAttribute="centerY" id="Dvg-qx-CCU"/>
                                                 <constraint firstItem="tg2-Fx-Z3S" firstAttribute="leading" secondItem="Hqm-IG-p5Z" secondAttribute="leading" constant="20" symbolic="YES" id="KoH-rE-2fz"/>
+                                                <constraint firstAttribute="trailing" secondItem="rhQ-3B-Ftj" secondAttribute="trailing" constant="20" id="SVI-nP-zUB"/>
                                                 <constraint firstItem="tg2-Fx-Z3S" firstAttribute="centerY" secondItem="Hqm-IG-p5Z" secondAttribute="centerY" id="vzA-5i-3ke"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="o8M-mT-tlF">
+                                        <rect key="frame" x="0.0" y="470.5" width="414" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="o8M-mT-tlF" id="Cud-5l-5tq">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Due Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w9T-gA-GuJ">
+                                                    <rect key="frame" x="20" y="11.5" width="71" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" systemColor="systemGrayColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="w9T-gA-GuJ" firstAttribute="leading" secondItem="Cud-5l-5tq" secondAttribute="leading" constant="20" symbolic="YES" id="Bpo-t9-jsU"/>
+                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="w9T-gA-GuJ" secondAttribute="trailing" constant="20" id="rTc-ON-eBx"/>
+                                                <constraint firstItem="w9T-gA-GuJ" firstAttribute="centerY" secondItem="Cud-5l-5tq" secondAttribute="centerY" id="uqZ-qy-hZ9"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="216" id="5ER-VZ-a6E">
-                                        <rect key="frame" x="0.0" y="454" width="414" height="216"/>
+                                        <rect key="frame" x="0.0" y="514" width="414" height="216"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="5ER-VZ-a6E" id="9bX-bH-HD7">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="216"/>
@@ -415,6 +452,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="attachmentImageView" destination="rhQ-3B-Ftj" id="3Gt-a2-aS1"/>
                         <outlet property="newTaskDate" destination="7Wc-th-y2r" id="27w-UH-IDf"/>
                         <outlet property="newTaskDescrip" destination="Zhi-uw-GdX" id="ksH-ER-9we"/>
                         <outlet property="newTaskText" destination="X2I-dE-fKI" id="WBN-uy-neM"/>
@@ -653,8 +691,8 @@
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="62" id="kY0-xN-CHV"/>
                                                     </constraints>
-                                                    <state key="normal" title="Button"/>
-                                                    <buttonConfiguration key="configuration" style="gray" image="checkmark" catalog="system"/>
+                                                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                    <state key="normal" image="checkmark" catalog="system"/>
                                                     <connections>
                                                         <action selector="isCompleteButton:" destination="Vo2-Cd-OzA" eventType="touchUpInside" id="lsz-Sm-par"/>
                                                     </connections>
@@ -684,6 +722,20 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="iXj-Ae-FLz">
+                        <nil key="title"/>
+                        <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="tOe-47-Rd3">
+                            <rect key="frame" x="20" y="5.5" width="337" height="33"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <segments>
+                                <segment title="All"/>
+                                <segment title="Archived"/>
+                                <segment title="Done"/>
+                                <segment title="Overdue"/>
+                            </segments>
+                            <connections>
+                                <action selector="changeViewOnSegment:" destination="BYZ-38-t0r" eventType="valueChanged" id="nL3-CF-gXE"/>
+                            </connections>
+                        </segmentedControl>
                         <barButtonItem key="rightBarButtonItem" title="Add" id="TPc-iD-F15">
                             <connections>
                                 <action selector="didTapAdd" destination="BYZ-38-t0r" id="hRh-Tx-WAQ"/>
@@ -692,12 +744,13 @@
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="z4e-1X-vU7" id="4lp-KC-jHV"/>
+                        <outlet property="viewsToDisplay" destination="tOe-47-Rd3" id="rjf-nf-xO0"/>
                         <segue destination="FQf-mf-68H" kind="show" identifier="Edit" id="4gp-dW-One"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1022" y="41"/>
+            <point key="canvasLocation" x="1021.7391304347827" y="40.848214285714285"/>
         </scene>
         <!--Entry View Controller-->
         <scene sceneID="Rgd-v5-mln">
@@ -1239,6 +1292,9 @@
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGrayColor">
+            <color red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemPurpleColor">
             <color red="0.68627450980392157" green="0.32156862745098042" blue="0.87058823529411766" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

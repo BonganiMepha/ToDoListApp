@@ -44,6 +44,7 @@ class TaskTableViewController: UITableViewController {
      fetchRequest.sortDescriptors = [sortDescriptor]
      //Predicate
      // Fetch only the reminders that match this list
+       let completedPredicate = NSPredicate(format: "%K == %@", "isComplete", NSNumber(value: false))
        let predicate  = NSPredicate(format: "%K == %@", "origin.catName", self.category!.catName)
      fetchRequest.predicate = predicate
      
