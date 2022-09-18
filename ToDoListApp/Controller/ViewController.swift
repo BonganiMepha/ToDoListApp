@@ -25,7 +25,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     var editIndexPath: Int?
     var selectedItem: ToDoListItem?
     var selectedView: ViewsToShow = .All
-
+    
     
     
     override func viewDidLoad() {
@@ -54,12 +54,12 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             selectedView = .Archived
             models = getSelectedItems(viewToShow: .Archived)
             tableView.reloadData()
-//            print(models.count)
+            //            print(models.count)
         case 2:
             selectedView = .Done
             models = getSelectedItems(viewToShow: .Done)
             tableView.reloadData()
-//            print(models.count)
+            //            print(models.count)
         case 3:
             selectedView = .Overdue
             models = getSelectedItems(viewToShow: .Overdue)
@@ -70,9 +70,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     @IBAction func didTapAdd () {
-         let vc = storyboard?.instantiateViewController(withIdentifier: "Entry") as! EntryViewController
-         vc.title = "New Task"
-         navigationController?.pushViewController(vc , animated: true)
+        let vc = storyboard?.instantiateViewController(withIdentifier: "Entry") as! EntryViewController
+        vc.title = "New Task"
+        navigationController?.pushViewController(vc , animated: true)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -80,8 +80,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-       let model = models[indexPath.row]
-       let cell  = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? CustomTableViewCell
+        let model = models[indexPath.row]
+        let cell  = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? CustomTableViewCell
         
         cell?.setCell(isDone: model.isComplete)
         cell?.textLabel?.text = model.name
@@ -112,25 +112,25 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             item.isArchived.toggle()
             tableView.reloadData()
             print(item.isArchived)
-            do{
-                try self.context.save()
-                self.tableView.reloadData()
-            }
-            catch{
-                print(error.localizedDescription)
-            }
-                
-            }
+            try? self.context.save()
+            tableView.reloadData()
+        }
         
         let deleteAction = UIContextualAction(style: .destructive, title: "Delete") {(action, view, completion) in
-            let item = self.models[indexPath.row]
-            self.models.remove(at: indexPath.row)
-            self.context.delete(item)
-            try? self.context.save()
-            self.tableView.reloadData()
-            
+            let deleteAlert = UIAlertController(title: "Are you sure", message: "are you sure you want to delete this task", preferredStyle: .alert)
+            deleteAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+            deleteAlert.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: { action in
+                let item = self.models[indexPath.row]
+                self.models.remove(at: indexPath.row)
+                self.context.delete(item)
+                try? self.context.save()
+                self.tableView.reloadData()
+                
+            }))
+            self.present(deleteAlert, animated: true)
         }
-            archiveAction.backgroundColor = .purple
+        
+        archiveAction.backgroundColor = .purple
         return UISwipeActionsConfiguration(actions: [editAction, archiveAction,deleteAction])
         
     }
@@ -141,11 +141,11 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             destinationVC?.AssignFields(title: selectedItem!)
         }
     }
-
+    
     
     
     //MARK: - Core Data
-
+    
     func getSelectedItems(viewToShow: ViewsToShow) -> [ToDoListItem]{
         switch viewToShow {
         case .All:
@@ -165,7 +165,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 var unarry = models.filter { items in
                     return items.isArchived == true
                 }
-                 return unarry
+                return unarry
             }
             catch {
                 print(error.localizedDescription)
@@ -185,7 +185,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             do {
                 models = try context.fetch(ToDoListItem.fetchRequest())
                 return models.filter { items in
-                    items.createdAt ?? Date() > Date()
+                    items.createdAt ?? Date() < Date()
                 }
             }
             catch {
@@ -208,11 +208,11 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         catch {
             //error
             print(error.localizedDescription)
-        }    
+        }
     }
     
     func createItem(name: String) {
-
+        
         let newItem = ToDoListItem(context: context)
         newItem.name = name
         newItem.createdAt = Date()

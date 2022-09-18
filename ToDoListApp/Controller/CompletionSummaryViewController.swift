@@ -9,28 +9,34 @@ import UIKit
 
 class CompletionSummaryViewController: UIViewController {
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-    private var completedTasks = [ToDoListItem]()
+    private var modelTasks = [ToDoListItem]()
     
-    @IBOutlet weak var summaryText: UILabel!
+    @IBOutlet var completedTasksText : UILabel!
+    @IBOutlet var overdueTasksText : UILabel!
+    
     var completedItems  = 0
+    var overdueItems = 0
+    var totalItems = 0
+    
+    var completionWasCheck: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        summaryText.text = String(completedItems)
+        
         getAllItems()
         CompletedData()
     }
-
-
+    
+    
     func getAllItems() {
         do {
-            completedTasks  = try context.fetch(ToDoListItem.fetchRequest())
+            modelTasks  = try context.fetch(ToDoListItem.fetchRequest())
         }
         catch {
             //error
@@ -39,17 +45,22 @@ class CompletionSummaryViewController: UIViewController {
     }
     
     func CompletedData(){
-        for items in completedTasks {
+        
+        totalItems = modelTasks.count
+        
+        for items in modelTasks {
             if items.isComplete{
-                if completedItems == completedItems {
-                    print(completedItems)
-                }else{
-                    completedItems += 1
-                }
+                completedItems = 0
+                completedItems += 1
             }
-            print(completedItems)
+            else if items.createdAt ?? Date() < Date(){
+                overdueItems = 0
+                overdueItems += 1
+            }
         }
         
+        completedTasksText.text = " \(completedItems) / \(totalItems)"
+        overdueTasksText.text = "\(overdueItems) / \(totalItems)"
     }
     
 }

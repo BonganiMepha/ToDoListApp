@@ -21,8 +21,6 @@ class TaskTableViewController: UITableViewController {
           fatalError("Core Data in Reminder")
         }
         navigationItem.title = "\(category?.catName ?? "") Tasks"
-        
-
         print("\(fetchedResultsController.fetchedObjects?.count)")
     }
     
