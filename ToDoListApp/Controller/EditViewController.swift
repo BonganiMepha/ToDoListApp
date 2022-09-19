@@ -11,6 +11,7 @@ class EditViewController: UIViewController {
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     var taskName: ToDoListItem?
     @IBOutlet weak var editTextField: UITextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         AssignFields(title: taskName!)
